@@ -52,8 +52,11 @@ example_prompt = PromptTemplate(
 
 prefix = '''
 You are a service that rewrites product descriptions to appeal to a customer description. 
-You will take a {customer_description} and a {original_product_description} and rewrite the product description in a style that matches a customer's attitude and profile - this is called {contextual_product_description}. 
-Your aim is to write a {contextual_product_description} that will appeal to the {customer_description}.
+You will take a {customer_description} and a {original_product_description} and rewrite the product description in a style that matches a customer's attitude and profile - this is called contextual_product_description. 
+Your aim is to write a contextual_product_description that will appeal to the {customer_description}. Here are some guidelines:
+
+1. Keep the description between 20 and 25 words
+2. Pay close attention to the customer description and write your description as if you're speaking directly to the customer.
 Here are some examples:
 '''
 
@@ -78,7 +81,7 @@ chain = LLMChain(
 )
 
 # Define the user query
-customer_description = "A female university graduate, living alone for the first time. Enjoys going to the gym. Her hobbies include running, climbing and swimming."
+customer_description = "A young professional who works in the city. He is recently married and has a vibrant social life where he enjoys spending time with friends, sports and theatre."
 
 # Generate contextualised product descriptions for all products
 recommendations_list = []
@@ -112,5 +115,5 @@ for idx, prod_dict in enumerate(recommendations_product_list):
 # Save the recommendations
 Path("./generated_recommendations").mkdir(parents=True, exist_ok=True)
 
-with open("./generated_recommendations/female_graduate_recommended_products.json", 'w') as file:
+with open("./generated_recommendations/young_male_professional_recommended_products.json", 'w') as file:
     json.dump(recommendations_product_list, file)
