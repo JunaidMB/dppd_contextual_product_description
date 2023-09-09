@@ -10,5 +10,6 @@ This example is very crude and can be improved in several ways:
 2. Include more few shot examples.
 3. Reduce the dependency on a for loop to query LLM.
 4. Integrate a more sophisticated representation of customer descriptions.
+5. Think about ways to reduce hallucinations or refrain from contextualising descriptions that are inappropriate. E.g. One product `Men's Casual Jeans` cannot have a contextualised product description for females. But in our example, the model changed the product nane and contextualised a hallucinated product description.
 
 **Note**: I used `pip-tools` to handle dependencies so you can use `pip-sync` to load dependencies, preferably in a virtual environment.
